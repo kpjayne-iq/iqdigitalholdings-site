@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IQ Video Studio — IQ Digital Holdings LLC</title>
+  <meta name="description" content="IQ Video Studio is a full-stack video production house by IQ Digital Holdings LLC. We produce cinematic faceless content, branded series, and scalable video at studio quality — script to screen.">
+  <meta name="author" content="IQ Digital Holdings LLC">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="IQ Video Studio — IQ Digital Holdings LLC">
+  <meta property="og:description" content="Cinematic video production, script to screen. Branded series, faceless content, and scalable video at studio quality.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.iqdigitalholdings.com">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="IQ Video Studio — IQ Digital Holdings LLC">
+  <meta name="twitter:description" content="Cinematic video production, script to screen. Branded series, faceless content, and scalable video at studio quality.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0B0712;
+      --bg-soft: #120C1E;
+      --surface: #170F26;
+      --surface-2: #1E1432;
+      --ink: #F4F0FF;
+      --muted: #A99FC4;
+      --faint: #6F6690;
+      --line: rgba(180, 150, 255, 0.14);
+
+      --violet: #A855F7;
+      --magenta: #FF2D9B;
+      --coral: #FF6A1A;
+      --cyan: #00E5FF;
+      --lime: #B6FF1A;
+
+      --grad: linear-gradient(100deg, #A855F7 0%, #FF2D9B 45%, #FF6A1A 100%);
+      --grad-soft: linear-gradient(100deg, #A855F7, #FF2D9B);
+    }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 100px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--magenta); color: #fff; }
+
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', sans-serif; }
+
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .grad-flow {
+      background: linear-gradient(100deg, #A855F7, #FF2D9B, #FF6A1A, #FF2D9B, #A855F7);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: textFlow 6s linear infinite;
+    }
+    @keyframes textFlow {
+      0% { background-position: 0% center; }
+      100% { background-position: 220% center; }
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(11, 7, 18, 0.6);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      transition: padding 0.4s ease, background 0.4s ease;
+    }
+
+    .logo { display: flex; align-items: center; gap: 13px; }
+
+    .logo-mark {
+      width: 38px; height: 38px; border-radius: 11px;
+      background: linear-gradient(115deg, #A855F7, #FF2D9B, #FF6A1A, #A855F7);
+      background-size: 280% 280%;
+      animation: logoFlow 6s ease infinite, logoPulse 3.2s ease-in-out infinite;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 1rem; color: #fff; letter-spacing: -0.04em;
+      position: relative; cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .logo-mark::after {
+      content: ''; position: absolute; inset: 0; border-radius: 11px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+      pointer-events: none;
+    }
+    .logo:hover .logo-mark { transform: rotate(-6deg) scale(1.08); }
+
+    @keyframes logoFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 6px 22px rgba(255, 45, 155, 0.4); }
+      50% { box-shadow: 0 6px 30px rgba(168, 85, 247, 0.65); }
+    }
+
+    .logo-text { display: flex; flex-direction: column; gap: 1px; line-height: 1.1; }
+    .logo-wordmark {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-size: 1.18rem; letter-spacing: -0.01em; color: var(--ink);
+    }
+    .logo-sub {
+      font-size: 0.56rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--faint); font-weight: 500;
+    }
+
+    nav { display: flex; gap: 38px; align-items: center; }
+    nav a {
+      font-size: 0.78rem; letter-spacing: 0.01em;
+      color: var(--muted); text-decoration: none; font-weight: 400;
+      transition: color 0.25s ease; position: relative;
+    }
+    nav a:not(.nav-cta)::after {
+      content: ''; position: absolute; bottom: -5px; left: 0;
+      width: 0; height: 2px; border-radius: 2px;
+      background: var(--grad-soft); transition: width 0.3s ease;
+    }
+    nav a:hover { color: var(--ink); }
+    nav a:not(.nav-cta):hover::after { width: 100%; }
+
+    nav a.nav-cta {
+      color: #fff; background: var(--grad);
+      padding: 11px 22px; border-radius: 100px; font-weight: 500;
+      box-shadow: 0 6px 22px rgba(236, 72, 153, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    nav a.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.45); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 160px 56px 100px; overflow: hidden;
+    }
+
+    .aurora { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); opacity: 0.78; mix-blend-mode: screen;
+    }
+    .blob.b1 { width: 640px; height: 640px; background: #A855F7; top: -180px; left: -120px; animation: drift1 18s ease-in-out infinite; }
+    .blob.b2 { width: 580px; height: 580px; background: #FF2D9B; top: -60px; right: -100px; animation: drift2 22s ease-in-out infinite; }
+    .blob.b3 { width: 520px; height: 520px; background: #FF6A1A; bottom: -160px; left: 30%; animation: drift3 20s ease-in-out infinite; }
+    .blob.b4 { width: 440px; height: 440px; background: #00E5FF; bottom: -120px; right: 10%; opacity: 0.6; animation: drift1 26s ease-in-out infinite; }
+
+    @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px, 50px) scale(1.12); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-70px, 40px) scale(1.08); } }
+    @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px, -50px) scale(1.15); } }
+
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 30%, transparent 50%, rgba(11,7,18,0.5) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    .hero-inner { position: relative; z-index: 2; max-width: 1100px; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 8px 16px; border-radius: 100px;
+      border: 1px solid var(--line); background: rgba(139, 92, 246, 0.08);
+      font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted);
+      text-transform: uppercase; font-weight: 500; margin-bottom: 34px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.2s forwards;
+    }
+    .badge .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--lime);
+      box-shadow: 0 0 10px var(--lime); animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      line-height: 0.98; letter-spacing: -0.035em;
+      color: var(--ink); margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.35s forwards;
+    }
+
+    .hero p.lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem); font-weight: 300;
+      line-height: 1.7; color: var(--muted); max-width: 600px; margin-bottom: 44px;
+      opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+    .hero p.lead strong { color: var(--ink); font-weight: 500; }
+
+    .cta-row {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s ease 0.65s forwards;
+    }
+
+    .btn-primary {
+      background: var(--grad); color: #fff;
+      font-size: 0.9rem; font-weight: 500; padding: 16px 34px;
+      border-radius: 100px; text-decoration: none;
+      box-shadow: 0 10px 34px rgba(255, 45, 155, 0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(255, 45, 155, 0.7); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.04); color: var(--ink);
+      font-size: 0.9rem; font-weight: 500; padding: 16px 34px;
+      border-radius: 100px; text-decoration: none; border: 1px solid var(--line);
+      transition: background 0.25s ease, border-color 0.25s ease;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(180,150,255,0.4); }
+
+    .hero-stats {
+      display: flex; gap: 56px; margin-top: 72px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s ease 0.8s forwards;
+    }
+    .stat .num {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 2.4rem; letter-spacing: -0.03em; line-height: 1;
+    }
+    .stat .label {
+      font-size: 0.74rem; letter-spacing: 0.04em; color: var(--faint);
+      margin-top: 8px; text-transform: uppercase;
+    }
+
+    /* ── SECTION SHELL ── */
+    .section { padding: 130px 56px; position: relative; }
+
+    .section-head { max-width: 760px; margin-bottom: 72px; }
+    .eyebrow {
+      display: inline-block; font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 600; margin-bottom: 20px;
+    }
+    .section-head h2 {
+      font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.6rem);
+      line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .section-head p {
+      font-size: 1.02rem; color: var(--muted); font-weight: 300;
+      line-height: 1.8; margin-top: 24px; max-width: 600px;
+    }
+
+    /* ── CAPABILITIES ── */
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .cap {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; padding: 36px 32px 38px;
+      position: relative; overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+    .cap::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--c, var(--violet)); opacity: 0.9;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .cap::after {
+      content: ''; position: absolute; top: -40%; right: -30%;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: var(--c, var(--violet)); opacity: 0; filter: blur(60px);
+      transition: opacity 0.4s ease;
+    }
+    .cap:hover { transform: translateY(-6px); border-color: rgba(180,150,255,0.32); background: var(--surface-2); }
+    .cap:hover::before { transform: scaleX(1); }
+    .cap:hover::after { opacity: 0.32; }
+
+    .cap-icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; position: relative; z-index: 1;
+      background: color-mix(in srgb, var(--c, var(--violet)) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c, var(--violet)) 40%, transparent);
+    }
+    .cap-icon svg { width: 24px; height: 24px; stroke: var(--c, var(--violet)); fill: none; stroke-width: 1.6; }
+
+    .cap h3 { font-size: 1.28rem; font-weight: 600; color: var(--ink); margin-bottom: 12px; position: relative; z-index: 1; letter-spacing: -0.01em; }
+    .cap p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; font-weight: 300; position: relative; z-index: 1; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .svc {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; padding: 40px;
+      display: flex; flex-direction: column; gap: 14px;
+      position: relative; overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease;
+    }
+    .svc:hover { transform: translateY(-5px); border-color: rgba(180,150,255,0.3); }
+    .svc .tag {
+      align-self: flex-start;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+      padding: 6px 13px; border-radius: 100px;
+      background: color-mix(in srgb, var(--c) 14%, transparent);
+      color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+    }
+    .svc h4 { font-size: 1.5rem; font-weight: 600; color: var(--ink); letter-spacing: -0.015em; line-height: 1.2; }
+    .svc p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+    /* ── PIPELINE ── */
+    .pipe-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items: start; }
+
+    .pipe-left { position: sticky; top: 120px; }
+    .pipe-left h2 { font-weight: 700; font-size: clamp(2rem, 3.4vw, 3.2rem); line-height: 1.08; letter-spacing: -0.03em; margin: 20px 0 24px; }
+    .pipe-left p { color: var(--muted); font-weight: 300; line-height: 1.8; max-width: 380px; }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step {
+      display: grid; grid-template-columns: 54px 1fr; gap: 24px; align-items: start;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 18px; padding: 28px 30px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .step:hover { transform: translateX(6px); border-color: rgba(180,150,255,0.3); }
+    .step-num {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem;
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--grad); color: #fff;
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+    }
+    .step h4 { font-size: 1.18rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    /* ── WORK ── */
+    .work { background: var(--bg-soft); border-top: 1px solid var(--line); }
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .work-card {
+      position: relative; border-radius: 22px; overflow: hidden;
+      min-height: 280px; padding: 40px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: transform 0.4s ease;
+    }
+    .work-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.9; z-index: 0;
+      background: var(--wg); transition: opacity 0.4s ease;
+    }
+    .work-card::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(11,7,18,0.1) 0%, rgba(11,7,18,0.82) 100%);
+    }
+    .work-card:hover { transform: translateY(-6px); }
+    .work-card:hover::before { opacity: 1; }
+    .work-card.clickable { cursor: pointer; }
+
+    .work-content { position: relative; z-index: 2; }
+    .work-cat {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.66rem;
+      letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+      color: rgba(255,255,255,0.85); margin-bottom: 12px; display: block;
+    }
+    .work-card h3 { font-size: 1.9rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.1; }
+    .work-card p { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.65; font-weight: 300; max-width: 380px; }
+    .work-arrow {
+      position: absolute; top: 32px; right: 32px; z-index: 2;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.14); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .work-card:hover .work-arrow { background: rgba(255,255,255,0.95); transform: rotate(-45deg); }
+    .work-arrow svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 2; transition: stroke 0.3s ease; }
+    .work-card:hover .work-arrow svg { stroke: #140D20; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      margin: 0 56px; border-radius: 32px; padding: 96px 60px;
+      text-align: center; position: relative; overflow: hidden;
+      background: var(--grad);
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .cta-wrap { position: relative; z-index: 1; }
+    .cta-band h2 { font-weight: 700; font-size: clamp(2.4rem, 5vw, 4.4rem); color: #fff; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .cta-band p { font-size: 1.05rem; color: rgba(255,255,255,0.9); font-weight: 300; max-width: 500px; margin: 0 auto 40px; }
+    .cta-band .btn-light {
+      background: #fff; color: #140D20;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem;
+      padding: 17px 40px; border-radius: 100px; text-decoration: none;
+      display: inline-block; transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .cta-band .btn-light:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .contact-left h2 { font-weight: 700; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
+    .contact-left p { color: var(--muted); font-weight: 300; line-height: 1.8; max-width: 400px; }
+
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 24px; padding: 14px 36px;
+    }
+    .contact-item { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-label { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); font-weight: 600; margin-bottom: 8px; }
+    .contact-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 500; color: var(--ink); }
+    .contact-value a { color: inherit; text-decoration: none; transition: color 0.25s ease; }
+    .contact-value a:hover { color: var(--magenta); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-brand .logo-mark { width: 32px; height: 32px; font-size: 0.85rem; border-radius: 9px; box-shadow: none; animation: logoFlow 6s ease infinite; cursor: default; }
+    .footer-brand:hover .logo-mark { transform: none; }
+    .footer-brand span { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--ink); font-size: 1rem; }
+    .footer-copy { font-size: 0.78rem; color: var(--faint); }
+    .footer-tag { font-size: 0.74rem; color: var(--faint); letter-spacing: 0.04em; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1 { transition-delay: 0.08s; } .rd2 { transition-delay: 0.16s; } .rd3 { transition-delay: 0.24s; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blob { animation: none; }
+      *, *::before, *::after { animation-duration: 0.001s !important; transition: none !important; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      header { padding: 18px 22px; }
+      nav { gap: 18px; }
+      nav a:not(.nav-cta) { display: none; }
+
+      .hero { padding: 130px 22px 80px; }
+      .hero-stats { gap: 36px; }
+
+      .section { padding: 80px 22px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .pipe-grid { grid-template-columns: 1fr; gap: 44px; }
+      .pipe-left { position: static; }
+      .work-grid { grid-template-columns: 1fr; }
+      .cta-band { margin: 0 22px; padding: 70px 30px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+      footer { padding: 40px 22px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">IQ</div>
+      <div class="logo-text">
+        <span class="logo-wordmark">IQ Video Studio</span>
+        <span class="logo-sub">IQ Digital Holdings</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact" class="nav-cta">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="aurora">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <div class="blob b4"></div>
+    </div>
+    <div class="hero-inner">
+      <span class="badge"><span class="dot"></span> Now booking new projects</span>
+      <h1>Video that<br /><span class="grad-flow">moves people.</span></h1>
+      <p class="lead">
+        IQ Video Studio is a full-stack production house. We turn an idea into a <strong>finished, cinematic video</strong> — script, voice, visuals, motion, and edit — without a crew, a set, or a six-figure budget.
+      </p>
+      <div class="cta-row">
+        <a href="#contact" class="btn-primary">Start a Project</a>
+        <a href="#work" class="btn-ghost">See the Work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num grad-text">Script→Screen</div><div class="label">Fully in-house</div></div>
+        <div class="stat"><div class="num grad-text">Series</div><div class="label">Built to scale</div></div>
+        <div class="stat"><div class="num grad-text">Faceless</div><div class="label">No camera required</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section" id="capabilities">
+    <div class="section-head">
+      <span class="eyebrow grad-text">Capabilities</span>
+      <h2>Everything a video needs,<br />under one roof.</h2>
+      <p>From the first line of script to the final rendered frame — the studio handles the whole pipeline, so the look stays consistent and the output never stops.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap reveal" style="--c: var(--violet)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 9h18M8 5v14"/></svg></div>
+        <h3>Cinematic Visuals</h3>
+        <p>Photoreal and stylized imagery composited to a consistent, premium look — built for retention, not stock-footage filler.</p>
+      </div>
+      <div class="cap reveal rd1" style="--c: var(--magenta)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M9 6a3 3 0 1 0 6 0M6 12a6 6 0 0 0 12 0M5 21h14"/></svg></div>
+        <h3>Studio Narration</h3>
+        <p>Natural, broadcast-grade voiceover with directed pacing and tone — a consistent host voice across an entire series, on demand.</p>
+      </div>
+      <div class="cap reveal rd2" style="--c: var(--coral)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h4l2-4 4 8 2-4h4"/></svg></div>
+        <h3>Motion &amp; Edit</h3>
+        <p>Frame-accurate editing and motion design — titles, lower-thirds, transitions, and brand framing rendered at scale.</p>
+      </div>
+      <div class="cap reveal" style="--c: var(--cyan)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></div>
+        <h3>Faceless Channels</h3>
+        <p>Complete faceless YouTube and short-form formats — no on-camera talent required, fully branded and repeatable episode to episode.</p>
+      </div>
+      <div class="cap reveal rd1" style="--c: var(--lime)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M4 18V6M10 18V9M16 18v-6M22 18V4"/></svg></div>
+        <h3>Series at Scale</h3>
+        <p>A locked visual system and pipeline that produces dozens of on-brand episodes without the per-video cost of a traditional studio.</p>
+      </div>
+      <div class="cap reveal rd2" style="--c: var(--violet)">
+        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3>Script &amp; Story</h3>
+        <p>Research-backed scripting and structure — hooks, narrative arcs, and pacing engineered to hold attention from cold open to close.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+    <div class="section-head">
+      <span class="eyebrow grad-text">Services</span>
+      <h2>Built for creators, brands<br />&amp; founders.</h2>
+      <p>Whether you need a single hero video or an always-on content engine, the studio scopes to the outcome — and delivers finished, ready-to-publish files.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal" style="--c: var(--violet)">
+        <span class="tag">For Creators</span>
+        <h4>Faceless Channel Production</h4>
+        <p>A complete faceless format — script, voice, visuals, and edit — produced as a repeatable series you can publish on a schedule.</p>
+      </div>
+      <div class="svc reveal rd1" style="--c: var(--magenta)">
+        <span class="tag">For Brands</span>
+        <h4>Branded Series &amp; Explainers</h4>
+        <p>On-brand explainers, product stories, and educational series with a locked visual identity across every episode.</p>
+      </div>
+      <div class="svc reveal" style="--c: var(--coral)">
+        <span class="tag">For Founders</span>
+        <h4>Short-Form at Volume</h4>
+        <p>Vertical short-form for TikTok, Reels, and Shorts — produced in batches, formatted for each platform, ready to post.</p>
+      </div>
+      <div class="svc reveal rd1" style="--c: var(--cyan)">
+        <span class="tag">For Teams</span>
+        <h4>White-Label Production</h4>
+        <p>Overflow and white-label video for agencies and studios that need consistent output without expanding headcount.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="pipe-grid">
+      <div class="pipe-left">
+        <span class="eyebrow grad-text">The Pipeline</span>
+        <h2>A production engine, not a one-off.</h2>
+        <p>IQ Video Studio runs on a proprietary pipeline that turns a brief into a finished video through four repeatable stages — engineered for consistency and speed. Studio-grade output, delivered faster and at a fraction of the cost of a traditional crew.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-num">1</div><div><h4>Brief &amp; Script</h4><p>We align on goal, audience, and format, then write a structured script built around a strong hook and a clear payoff.</p></div></div>
+        <div class="step reveal rd1"><div class="step-num">2</div><div><h4>Voice &amp; Visuals</h4><p>Narration is recorded and visuals are generated to a locked style — every frame on-brand and on-message.</p></div></div>
+        <div class="step reveal rd2"><div class="step-num">3</div><div><h4>Assembly &amp; Motion</h4><p>Everything is composited, timed, and rendered with motion design, titles, and brand framing applied automatically.</p></div></div>
+        <div class="step reveal rd3"><div class="step-num">4</div><div><h4>Delivery</h4><p>You receive finished, publish-ready files — formatted for your platform, ready to upload the moment they land.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section work" id="work">
+    <div class="section-head">
+      <span class="eyebrow grad-text">Selected Work</span>
+      <h2>Channels &amp; brands<br />built in-house.</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-card clickable reveal" style="--wg: linear-gradient(135deg, #A855F7, #FF2D9B)" onclick="window.open('https://betweenthecards.co/','_blank')">
+        <div class="work-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+        <div class="work-content">
+          <span class="work-cat">Faceless Series · Poker Education</span>
+          <h3>Between the Cards</h3>
+          <p>A premium faceless poker strategy series — consistent host voice, branded visual system, and a locked episode format produced end to end.</p>
+        </div>
+      </div>
+      <div class="work-card clickable reveal rd1" style="--wg: linear-gradient(135deg, #FF2D9B, #FF6A1A)" onclick="window.open('https://www.rangeiqpoker.com/','_blank')">
+        <div class="work-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+        <div class="work-content">
+          <span class="work-cat">Product · Marketing Video</span>
+          <h3>RangeIQ Poker</h3>
+          <p>Launch and marketing video for a browser-based poker training product — short- and long-form content driving awareness and sign-ups.</p>
+        </div>
+      </div>
+      <div class="work-card reveal" style="--wg: linear-gradient(135deg, #00E5FF, #A855F7)">
+        <div class="work-content">
+          <span class="work-cat">Long-Form · Narrative</span>
+          <h3>Documentary Series</h3>
+          <p>Cinematic long-form formats spanning history, science, and decision-making — narrative-driven series built to hold attention and earn watch time.</p>
+        </div>
+      </div>
+      <div class="work-card reveal rd1" style="--wg: linear-gradient(135deg, #FF6A1A, #B6FF1A)">
+        <div class="work-content">
+          <span class="work-cat">Vertical · TikTok / Reels / Shorts</span>
+          <h3>Short-Form Library</h3>
+          <p>High-volume vertical short-form produced in batches and formatted per platform — built for reach and a steady publishing cadence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="cta-wrap">
+      <h2>Have an idea?<br />We'll produce it.</h2>
+      <p>Tell us the goal and the format. We'll scope the project and turn it into finished, publish-ready video.</p>
+      <a href="#contact" class="btn-light">Get in Touch →</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="eyebrow grad-text">Contact</span>
+        <h2>Let's build something.</h2>
+        <p>IQ Video Studio is a production house of IQ Digital Holdings LLC. For new projects, partnerships, or white-label inquiries, reach out directly — we'll respond with next steps and a scope.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-item">
+          <div class="contact-label">Studio</div>
+          <div class="contact-value">IQ Video Studio</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Parent Company</div>
+          <div class="contact-value">IQ Digital Holdings LLC</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Project Inquiries</div>
+          <div class="contact-value"><a href="mailto:studio@iqdigitalholdings.com">studio@iqdigitalholdings.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <div class="logo-mark">IQ</div>
+      <span>IQ Digital Holdings</span>
+    </div>
+    <span class="footer-copy">© 2026 IQ Digital Holdings LLC. All rights reserved.</span>
+    <span class="footer-tag">IQ Video Studio · Script to Screen</span>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.padding = window.scrollY > 50 ? '14px 56px' : '24px 56px';
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const h = document.querySelector('header').offsetHeight;
+          const top = target.getBoundingClientRect().top + window.scrollY - h - 20;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

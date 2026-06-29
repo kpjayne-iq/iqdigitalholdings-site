@@ -10,7 +10,7 @@
   <meta property="og:title" content="IQ Video Studio — IQ Digital Holdings LLC">
   <meta property="og:description" content="Cinematic video production, script to screen. Branded series, faceless content, and scalable video at studio quality.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.iqdigitalholdings.com">
+  <meta property="og:url" content="https://www.iqvideostudio.com">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="IQ Video Studio — IQ Digital Holdings LLC">
   <meta name="twitter:description" content="Cinematic video production, script to screen. Branded series, faceless content, and scalable video at studio quality.">
@@ -433,6 +433,84 @@
     .contact-value a { color: inherit; text-decoration: none; transition: color 0.25s ease; }
     .contact-value a:hover { color: var(--magenta); }
 
+    /* ── PRICING ── */
+    .pricing { background: var(--bg-soft); border-top: 1px solid var(--line); }
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+
+    .price-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 22px; padding: 38px 32px 36px;
+      display: flex; flex-direction: column; position: relative;
+      transition: transform 0.35s ease, border-color 0.35s ease;
+    }
+    .price-card:hover { transform: translateY(-6px); border-color: rgba(180,150,255,0.3); }
+
+    .price-card.featured {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+        var(--grad) border-box;
+      box-shadow: 0 20px 60px rgba(255, 45, 155, 0.18);
+    }
+    .price-card.featured:hover { transform: translateY(-10px); }
+
+    .pop-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--grad); color: #fff;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.64rem;
+      letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+      padding: 7px 18px; border-radius: 100px; white-space: nowrap;
+      box-shadow: 0 8px 22px rgba(255, 45, 155, 0.45);
+    }
+
+    .price-tier {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink);
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .price-card.featured .price-tier { color: var(--magenta); }
+    .price-card.featured .price-tier { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .price-amount {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 3rem; letter-spacing: -0.03em; color: var(--ink); line-height: 1; margin-bottom: 4px;
+    }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--faint); }
+
+    .price-desc { font-size: 0.86rem; color: var(--muted); font-weight: 300; line-height: 1.6; margin: 14px 0 26px; min-height: 44px; }
+
+    .price-divider { height: 1px; background: var(--line); margin-bottom: 24px; }
+
+    .price-feats { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 32px; flex: 1; }
+    .price-feats li { display: flex; align-items: flex-start; gap: 11px; font-size: 0.88rem; color: var(--muted); font-weight: 300; line-height: 1.5; }
+    .price-feats li svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; stroke: var(--lime); stroke-width: 2.4; fill: none; }
+    .price-feats li.muted { color: var(--faint); }
+    .price-feats li.muted svg { stroke: var(--faint); }
+    .price-feats li strong { color: var(--ink); font-weight: 600; }
+
+    .price-btn {
+      display: block; text-align: center; text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem;
+      padding: 15px 24px; border-radius: 100px;
+      background: rgba(255,255,255,0.05); color: var(--ink);
+      border: 1px solid var(--line);
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+    .price-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(180,150,255,0.4); transform: translateY(-2px); }
+    .price-btn.primary {
+      background: var(--grad); color: #fff; border-color: transparent;
+      box-shadow: 0 10px 30px rgba(255, 45, 155, 0.4);
+    }
+    .price-btn.primary:hover { box-shadow: 0 14px 40px rgba(255, 45, 155, 0.6); transform: translateY(-3px); }
+
+    .price-note {
+      text-align: center; margin-top: 40px;
+      font-size: 0.86rem; color: var(--muted); font-weight: 300;
+    }
+    .price-note a { color: var(--magenta); text-decoration: none; font-weight: 500; }
+    .price-note a:hover { text-decoration: underline; }
+    .price-note .shield { color: var(--lime); font-weight: 500; }
+
     /* ── FOOTER ── */
     footer {
       padding: 48px 56px;
@@ -474,6 +552,8 @@
       .pipe-grid { grid-template-columns: 1fr; gap: 44px; }
       .pipe-left { position: static; }
       .work-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; gap: 28px; }
+      .price-card.featured { order: -1; }
       .cta-band { margin: 0 22px; padding: 70px 30px; }
       .contact-grid { grid-template-columns: 1fr; gap: 44px; }
       footer { padding: 40px 22px; flex-direction: column; text-align: center; }
@@ -494,6 +574,7 @@
       <a href="#capabilities">Capabilities</a>
       <a href="#services">Services</a>
       <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
       <a href="#contact" class="nav-cta">Start a Project</a>
     </nav>
   </header>
@@ -653,6 +734,78 @@
     </div>
   </section>
 
+  <!-- PRICING -->
+  <section class="section pricing" id="pricing">
+    <div class="section-head">
+      <span class="eyebrow grad-text">Pricing</span>
+      <h2>Clear tiers,<br />commercial rights included.</h2>
+      <p>Every project is professionally directed — concept to final cut — with full commercial-use rights on every tier. Projects are booked and protected through Upwork.</p>
+    </div>
+
+    <div class="price-grid">
+
+      <!-- ESSENTIAL -->
+      <div class="price-card reveal">
+        <div class="price-tier">Essential</div>
+        <div class="price-amount">$450</div>
+        <p class="price-desc">A single concept for one channel or a first test. Up to one minute, light direction.</p>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>3-day</strong>&nbsp;delivery</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>1</strong>&nbsp;revision</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Up to <strong>60 seconds</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Scriptwriting &amp; voice-over</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Background music &amp; imagery</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full HD 1080p</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full commercial-use rights</li>
+        </ul>
+        <a href="https://www.upwork.com/services/product/video-audio-a-professionally-directed-explainer-video-from-concept-to-final-cut-2071246514540519197?ref=fl_profile" target="_blank" rel="noopener" class="price-btn">Book Essential</a>
+      </div>
+
+      <!-- SIGNATURE (FEATURED) -->
+      <div class="price-card featured reveal rd1">
+        <div class="pop-badge">Most Popular</div>
+        <div class="price-tier">Signature</div>
+        <div class="price-amount">$950</div>
+        <p class="price-desc">A polished, fully directed piece with a storyboard and a voice character of your choice.</p>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>7-day</strong>&nbsp;delivery</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>2</strong>&nbsp;revisions</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Up to <strong>180 seconds</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Everything in Essential</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>Storyboard</strong> included</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>1 voice swap</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full HD 1080p</li>
+        </ul>
+        <a href="https://www.upwork.com/services/product/video-audio-a-professionally-directed-explainer-video-from-concept-to-final-cut-2071246514540519197?ref=fl_profile" target="_blank" rel="noopener" class="price-btn primary">Book Signature</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="price-card reveal rd2">
+        <div class="price-tier">Premium</div>
+        <div class="price-amount">$1,800</div>
+        <p class="price-desc">A flagship production in 4K, with extended runtime and the most creative direction.</p>
+        <div class="price-divider"></div>
+        <ul class="price-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>10-day</strong>&nbsp;delivery</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>3</strong>&nbsp;revisions</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Up to <strong>360 seconds</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Everything in Signature</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>2 voice swaps</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><strong>Ultra HD 4K</strong></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Full commercial-use rights</li>
+        </ul>
+        <a href="https://www.upwork.com/services/product/video-audio-a-professionally-directed-explainer-video-from-concept-to-final-cut-2071246514540519197?ref=fl_profile" target="_blank" rel="noopener" class="price-btn">Book Premium</a>
+      </div>
+
+    </div>
+
+    <p class="price-note">
+      <span class="shield">◆ Upwork Payment Protection</span> — projects are funded upfront and released when you're satisfied. Prefer to talk first? <a href="#contact">Get in touch</a>.
+    </p>
+  </section>
+
   <!-- CTA BAND -->
   <section class="cta-band">
     <div class="cta-wrap">
@@ -681,7 +834,7 @@
         </div>
         <div class="contact-item">
           <div class="contact-label">Project Inquiries</div>
-          <div class="contact-value"><a href="mailto:studio@iqdigitalholdings.com">studio@iqdigitalholdings.com</a></div>
+          <div class="contact-value"><a href="mailto:studio@iqvideostudio.com">studio@iqvideostudio.com</a></div>
         </div>
       </div>
     </div>

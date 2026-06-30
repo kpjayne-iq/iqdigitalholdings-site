@@ -314,6 +314,25 @@
     .proof-fact span { font-size: 0.97rem; color: var(--paper-dim); line-height: 1.45; }
     .proof-fact strong { color: var(--paper); font-weight: 600; }
 
+    /* ── Selected work strip (real channels & series) ── */
+    .channels { margin-top: 30px; }
+    .channels .slate { margin-bottom: 16px; }
+    .channel-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .channel {
+      display: flex; align-items: center; gap: 11px;
+      background: var(--ink-raise); border: 1px solid var(--ink-line); border-radius: var(--radius);
+      padding: 18px 16px; font-family: var(--font-display); font-weight: 600; font-size: 1.02rem;
+      color: var(--paper); line-height: 1.15;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .channel:hover { border-color: rgba(231,178,90,0.4); transform: translateY(-3px); box-shadow: var(--bleed); }
+    .ch-glyph {
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(231,178,90,0.10); border: 1px solid rgba(231,178,90,0.30);
+    }
+    .ch-glyph svg { width: 13px; height: 13px; fill: var(--projector); margin-left: 1px; }
+
     /* ── Cards (V2/V3 legibility + hierarchy) ── */
     .grid { display: grid; gap: 20px; }
     .card {
@@ -528,6 +547,7 @@
       .produce-grid { grid-template-columns: repeat(2, 1fr); }
       .produce-grid > .card:nth-child(n) { grid-column: span 1; }
       .steps { grid-template-columns: repeat(2, 1fr); }
+      .channel-row { grid-template-columns: repeat(3, 1fr); }
     }
     /* Stack the hero earlier (R1) */
     @media (max-width: 960px) {
@@ -556,6 +576,7 @@
       .band--tight { padding: 60px 0; }
       .grid, .why-grid, .price-grid, .produce-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
+      .channel-row { grid-template-columns: 1fr 1fr; }
       .price.featured { transform: none; order: -1; }
       .price.featured:hover { transform: translateY(-5px); }
       .field-row { grid-template-columns: 1fr; }
@@ -661,6 +682,16 @@
           <div class="proof-fact"><svg viewBox="0 0 24 24"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 7v6l8 4 8-4V7"/></svg><span><strong>Script to final edit</strong> — the whole production handled in-house.</span></div>
           <div class="proof-fact"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Commercial-use rights</strong> included on every project.</span></div>
           <div class="proof-fact"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span><strong>Defined turnaround</strong> windows on every package.</span></div>
+        </div>
+      </div>
+      <div class="channels reveal rd1">
+        <span class="slate no-tick">Selected work — channels &amp; series from our studio</span>
+        <div class="channel-row">
+          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Between the Cards</div>
+          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>RangeIQ</div>
+          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Divine Visitors</div>
+          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Last Visitor</div>
+          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Failure Catalog</div>
         </div>
       </div>
     </div>
@@ -1000,18 +1031,17 @@
 
   <script>
     /* ─────────────────────────────────────────────
-       Lead capture — the whole game.
-       LAUNCH GATE: before this page goes live, point INTAKE_ENDPOINT at a
-       backend that PERSISTS each brief (Formspree / Basin / your API /
-       Supabase / Airtable). When it is set, the brief is POSTed and the
-       page only advances to the confirmation + Upwork hand-off on a
-       successful store. While it is empty, submissions degrade to a
-       pre-filled email to the studio inbox so a warm lead is never
-       silently dropped — but that is a fallback, not a replacement for
-       server-side capture.
+       Lead capture — every brief is persisted to Supabase before the
+       Upwork hand-off. The key below is the project's public anon key and
+       is SAFE to expose: the iqvs_leads table has row-level security that
+       allows INSERT only — visitors can submit a brief but can never read
+       anyone else's. If the insert fails (offline, etc.) the form degrades
+       to a pre-filled email so a warm lead is never silently dropped.
        ───────────────────────────────────────────── */
-    const INTAKE_ENDPOINT = '';                       // e.g. 'https://formspree.io/f/xxxxxxx'
-    const STUDIO_EMAIL    = 'studio@iqvideostudio.com';
+    const SUPABASE_URL = 'https://ergcjqowgdxpneohlvam.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVyZ2NqcW93Z2R4cG5lb2hsdmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NTk4NzcsImV4cCI6MjA5MTIzNTg3N30.wQdiGINtzMXezhpgOFS8Q3fYMydDQiL1A0IqTQk9TxQ';
+    const LEADS_TABLE  = 'iqvs_leads';
+    const STUDIO_EMAIL = 'studio@iqvideostudio.com';
 
     /* ── YouTube facade (load a hardened embed only on intent) ── */
     function playInFrame(frame) {
@@ -1129,18 +1159,23 @@
 
       const submitBtn = form.querySelector('button[type="submit"]');
       let stored = false;
-      if (INTAKE_ENDPOINT) {
-        submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
-        try {
-          const res = await fetch(INTAKE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          stored = res.ok;
-        } catch (err) { stored = false; }
-        submitBtn.disabled = false; submitBtn.textContent = 'Send Project Brief';
-      }
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/' + LEADS_TABLE, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(data)
+        });
+        stored = res.ok;
+      } catch (err) { stored = false; }
+      submitBtn.disabled = false; submitBtn.textContent = 'Send Project Brief';
+
+      // If the store failed, degrade to a pre-filled email so the lead isn't lost.
       if (!stored) { window.location.href = buildMailto(data); }
 
       modal.classList.add('confirmed');

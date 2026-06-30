@@ -322,9 +322,10 @@
       display: flex; align-items: center; gap: 11px;
       background: var(--ink-raise); border: 1px solid var(--ink-line); border-radius: var(--radius);
       padding: 18px 16px; font-family: var(--font-display); font-weight: 600; font-size: 1.02rem;
-      color: var(--paper); line-height: 1.15;
+      color: var(--paper); line-height: 1.15; text-decoration: none;
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
+    a.channel:hover { color: var(--projector); }
     .channel:hover { border-color: rgba(231,178,90,0.4); transform: translateY(-3px); box-shadow: var(--bleed); }
     .ch-glyph {
       width: 28px; height: 28px; flex-shrink: 0; border-radius: 7px;
@@ -687,11 +688,11 @@
       <div class="channels reveal rd1">
         <span class="slate no-tick">Selected work — channels &amp; series from our studio</span>
         <div class="channel-row">
-          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Between the Cards</div>
-          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>RangeIQ</div>
-          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Divine Visitors</div>
+          <a class="channel" href="https://betweenthecards.co" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Between the Cards</a>
+          <a class="channel" href="https://rangeiqpoker.com" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>RangeIQ</a>
+          <a class="channel" href="https://thedivinevisitors.com" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Divine Visitors</a>
+          <a class="channel" href="https://thefailurecatalog.com" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Failure Catalog</a>
           <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Last Visitor</div>
-          <div class="channel"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Failure Catalog</div>
         </div>
       </div>
     </div>

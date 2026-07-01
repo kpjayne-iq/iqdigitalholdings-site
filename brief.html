@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Brief — IQ Video Studio</title>
+  <meta name="description" content="Tell IQ Video Studio everything we need to start producing your video — audience, message, voice, tone, brand assets, and more." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#0C0D10" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C0D10'/%3E%3Crect x='3.5' y='3.5' width='25' height='25' rx='5' fill='none' stroke='%23E7B25A' stroke-width='1.4'/%3E%3Cpath d='M13 11.5l8 4.5-8 4.5z' fill='%23E7B25A'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:#0C0D10; --ink-raise:#16181E; --ink-line:#2A2E36;
+      --projector:#E7B25A; --projector-deep:#C8913A;
+      --paper:#F4F1EA; --paper-dim:#BCB6AA; --paper-faint:#948D80;
+      --glass:rgba(20,22,28,0.55); --glass-border:rgba(244,241,234,0.12);
+      --font-display:"Fraunces",Georgia,serif; --font-body:"Hanken Grotesk",system-ui,sans-serif; --font-mono:"Geist Mono",ui-monospace,monospace;
+      --radius:10px; --bleed:0 0 0 1px rgba(231,178,90,0.20),0 0 36px -10px rgba(231,178,90,0.28);
+    }
+    html { scroll-behavior:smooth; }
+    body {
+      background:var(--ink); color:var(--paper); font-family:var(--font-body); font-weight:400; line-height:1.6;
+      -webkit-font-smoothing:antialiased; min-height:100vh; overflow-x:hidden;
+      background-image:
+        radial-gradient(120% 70% at 50% -10%, rgba(231,178,90,0.07) 0%, transparent 42%),
+        radial-gradient(90% 60% at 90% 2%, rgba(27,36,53,0.5) 0%, transparent 55%);
+      background-attachment:fixed;
+    }
+    h1,h2,h3,.display { font-family:var(--font-display); font-weight:600; }
+    a { color:var(--projector); }
+    :focus-visible { outline:2px solid var(--projector); outline-offset:3px; border-radius:6px; }
+    .wrap { max-width:760px; margin:0 auto; padding:0 22px; }
+
+    header { padding:22px 0; border-bottom:1px solid var(--ink-line); background:rgba(12,13,16,0.6); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+    .hbar { display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; }
+    .brand-mark { width:34px; height:34px; border-radius:8px; border:1px solid var(--projector); background:radial-gradient(120% 120% at 30% 20%, rgba(231,178,90,0.22), rgba(12,13,16,0.9)); display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px -8px rgba(231,178,90,0.6); }
+    .brand-mark svg { width:15px; height:15px; fill:var(--projector); margin-left:2px; }
+    .brand-name { font-family:var(--font-display); font-weight:600; font-size:1.02rem; color:var(--paper); }
+    .brand-sub { font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper-dim); }
+    .back { font-size:0.85rem; color:var(--paper-dim); text-decoration:none; }
+    .back:hover { color:var(--projector); }
+
+    .intro-head { padding:44px 0 8px; }
+    .slate { font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--projector); font-weight:500; }
+    .intro-head h1 { font-size:clamp(2rem,5vw,3rem); line-height:1.05; letter-spacing:-0.02em; margin:14px 0 12px; }
+    .intro-head p { color:var(--paper-dim); font-size:1.08rem; font-weight:300; max-width:600px; }
+
+    /* progress */
+    .progress { position:sticky; top:0; z-index:20; padding:16px 0; background:linear-gradient(180deg, var(--ink) 70%, transparent); }
+    .progress-meta { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--paper-faint); margin-bottom:8px; }
+    .progress-track { height:4px; background:var(--ink-line); border-radius:100px; overflow:hidden; }
+    .progress-fill { height:100%; width:16%; background:var(--projector); border-radius:100px; box-shadow:0 0 10px var(--projector); transition:width 0.4s ease; }
+
+    form { padding-bottom:80px; }
+    .step { display:none; animation:fade 0.4s ease; }
+    .step.active { display:block; }
+    @keyframes fade { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+    .step-title { font-family:var(--font-display); font-size:1.5rem; font-weight:600; margin:8px 0 4px; }
+    .step-sub { color:var(--paper-dim); font-size:0.98rem; font-weight:300; margin-bottom:26px; }
+
+    .field { margin-bottom:22px; }
+    .field > label { display:block; font-family:var(--font-mono); font-size:0.74rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:9px; }
+    .field .req { color:var(--projector); }
+    .hint { display:block; font-family:var(--font-body); text-transform:none; letter-spacing:0; font-size:0.82rem; color:var(--paper-faint); margin-top:4px; font-weight:300; }
+    input[type=text], input[type=email], input[type=tel], input[type=url], input[type=date], select, textarea {
+      width:100%; background:var(--ink-raise); border:1px solid var(--ink-line); border-radius:9px;
+      padding:13px 14px; color:var(--paper); font-family:var(--font-body); font-size:1rem; transition:border-color 0.25s ease; appearance:none;
+    }
+    textarea { min-height:110px; resize:vertical; }
+    input::placeholder, textarea::placeholder { color:#5f5c57; }
+    input:focus, select:focus, textarea:focus { outline:none; border-color:var(--projector); }
+    select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23BCB6AA' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 13px center; background-size:18px; padding-right:40px; }
+    .field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+    /* choice chips (checkbox + radio) */
+    .choices { display:flex; flex-wrap:wrap; gap:10px; }
+    .choice { position:relative; }
+    .choice input { position:absolute; opacity:0; inset:0; cursor:pointer; }
+    .choice span { display:inline-flex; align-items:center; gap:8px; padding:11px 16px; border-radius:100px; border:1px solid var(--ink-line); background:var(--ink-raise); color:var(--paper-dim); font-size:0.95rem; cursor:pointer; transition:border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
+    .choice input:checked + span { border-color:var(--projector); color:var(--paper); background:rgba(231,178,90,0.10); }
+    .choice input:focus-visible + span { outline:2px solid var(--projector); outline-offset:2px; }
+    .choices.stack { flex-direction:column; }
+    .choices.stack .choice span { width:100%; border-radius:10px; }
+
+    /* file dropzone */
+    .drop { border:1px dashed var(--ink-line); border-radius:12px; padding:26px; text-align:center; background:var(--ink-raise); cursor:pointer; transition:border-color 0.25s ease, background 0.25s ease; }
+    .drop:hover, .drop.drag { border-color:var(--projector); background:rgba(231,178,90,0.05); }
+    .drop svg { width:30px; height:30px; stroke:var(--projector); fill:none; stroke-width:1.5; margin-bottom:10px; }
+    .drop b { color:var(--paper); font-weight:600; }
+    .drop small { display:block; color:var(--paper-faint); font-size:0.82rem; margin-top:6px; }
+    .filelist { margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+    .fileitem { display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--ink-raise); border:1px solid var(--ink-line); border-radius:9px; padding:10px 14px; font-size:0.9rem; }
+    .fileitem .fn { color:var(--paper); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .fileitem .fs { color:var(--paper-faint); font-family:var(--font-mono); font-size:0.76rem; flex-shrink:0; }
+    .fileitem button { background:none; border:0; color:var(--paper-faint); cursor:pointer; font-size:1.1rem; line-height:1; flex-shrink:0; }
+    .fileitem button:hover { color:var(--projector); }
+
+    /* nav buttons */
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:30px; padding-top:22px; border-top:1px solid var(--ink-line); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; font-family:var(--font-body); font-weight:600; font-size:0.97rem; padding:14px 28px; border-radius:10px; text-decoration:none; cursor:pointer; border:1px solid transparent; transition:background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease; }
+    .btn-primary { background:var(--projector); color:#1A1206; font-weight:700; box-shadow:0 10px 30px -12px rgba(231,178,90,0.6); }
+    .btn-primary:hover { background:var(--projector-deep); transform:translateY(-2px); }
+    .btn-primary[disabled] { opacity:0.6; cursor:not-allowed; transform:none; }
+    .btn-ghost { background:transparent; color:var(--paper); border-color:var(--ink-line); }
+    .btn-ghost:hover { border-color:var(--projector); color:var(--projector); }
+    .btn-ghost[hidden] { visibility:hidden; }
+    .err { color:#ff9a8a; font-size:0.9rem; margin-top:14px; min-height:1.2em; }
+
+    /* confirmation */
+    .confirm { display:none; text-align:center; padding:60px 0 90px; }
+    .confirm.on { display:block; }
+    #briefForm.done { display:none; }
+    .confirm-mark { width:76px; height:76px; border-radius:50%; margin:0 auto 26px; border:1px solid var(--projector); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px -8px rgba(231,178,90,0.55); }
+    .confirm-mark svg { width:34px; height:34px; stroke:var(--projector); stroke-width:2; fill:none; }
+    .confirm h2 { font-size:2rem; margin-bottom:14px; }
+    .confirm p { color:var(--paper-dim); font-size:1.1rem; font-weight:300; max-width:460px; margin:0 auto 30px; line-height:1.6; }
+
+    @media (max-width:560px){ .field-row { grid-template-columns:1fr; } .intro-head { padding:30px 0 4px; } .btn { padding:13px 20px; } }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } html{ scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hbar">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6l11 6-11 6z"/></svg></span>
+        <span><span class="brand-name">IQ Video Studio</span><br><span class="brand-sub">Creative Brief</span></span>
+      </a>
+      <a class="back" href="/">← Back to site</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-head" id="introHead">
+      <span class="slate">Creative Brief</span>
+      <h1>Let's build your video.</h1>
+      <p>The more you share, the sharper the result. It takes about 5 minutes — and you can attach your logo, images, or footage along the way. Fields marked <span style="color:var(--projector)">*</span> are required.</p>
+    </div>
+
+    <div class="progress" id="progress" hidden>
+      <div class="progress-meta"><span id="stepLabel">Step 1 of 6</span><span id="stepName">Contact</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <form id="briefForm" novalidate>
+
+      <!-- STEP 1 · Contact -->
+      <section class="step active" data-name="Contact">
+        <h2 class="step-title">Contact &amp; company</h2>
+        <p class="step-sub">Who are we making this for, and how do we reach you?</p>
+        <div class="field-row">
+          <div class="field"><label for="company">Company / brand name <span class="req">*</span></label><input id="company" name="company" type="text" required placeholder="Acme Co." /></div>
+          <div class="field"><label for="contact_name">Your name <span class="req">*</span></label><input id="contact_name" name="contact_name" type="text" required placeholder="Your name" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" required placeholder="you@company.com" /></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Optional" /></div>
+        </div>
+        <div class="field"><label for="website">Website</label><input id="website" name="website" type="url" placeholder="https://" /></div>
+      </section>
+
+      <!-- STEP 2 · Project + audience -->
+      <section class="step" data-name="The project">
+        <h2 class="step-title">The project</h2>
+        <p class="step-sub">What is this video for, and who is it for?</p>
+        <div class="field">
+          <label for="purpose">What's the video for? <span class="req">*</span></label>
+          <select id="purpose" name="purpose" required>
+            <option value="">Choose one…</option>
+            <option>Promote a product or service</option>
+            <option>Explain how something works</option>
+            <option>Brand story / who we are</option>
+            <option>Launch or announcement</option>
+            <option>Social / short-form content</option>
+            <option>Faceless YouTube episode</option>
+            <option>Recruiting / culture</option>
+            <option>Event or campaign</option>
+            <option>Other (tell us below)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="package">Package</label>
+            <select id="package" name="package"><option value="">Not sure yet</option><option>Essential — $450</option><option>Signature — $950</option><option>Premium — $1,800</option></select>
+          </div>
+          <div class="field"><label for="needed_by">Needed by</label><input id="needed_by" name="needed_by" type="date" /></div>
+        </div>
+        <div class="field"><label for="working_title">Working title</label><input id="working_title" name="working_title" type="text" placeholder="Optional" /></div>
+        <div class="field"><label for="audience">Who's the audience? <span class="req">*</span></label><textarea id="audience" name="audience" required placeholder="Who are we speaking to? (e.g. founders evaluating our SaaS, DTC shoppers, poker players…)"></textarea></div>
+        <div class="field"><label for="key_message">The one key message <span class="req">*</span></label><textarea id="key_message" name="key_message" required placeholder="If a viewer remembers one thing, what should it be?"></textarea></div>
+        <div class="field"><label for="cta">Call to action</label><input id="cta" name="cta" type="text" placeholder="What should they do after watching? (visit site, buy, book a call…)" /></div>
+      </section>
+
+      <!-- STEP 3 · Format -->
+      <section class="step" data-name="Format">
+        <h2 class="step-title">Where it'll be used</h2>
+        <p class="step-sub">Platforms decide the shape, length, and pacing.</p>
+        <div class="field">
+          <label>Platform(s) <span class="req">*</span> <span class="hint">Pick all that apply</span></label>
+          <div class="choices" data-multi="platforms">
+            <label class="choice"><input type="checkbox" value="Website / landing page"><span>Website / landing page</span></label>
+            <label class="choice"><input type="checkbox" value="YouTube"><span>YouTube</span></label>
+            <label class="choice"><input type="checkbox" value="Instagram / Reels"><span>Instagram / Reels</span></label>
+            <label class="choice"><input type="checkbox" value="TikTok"><span>TikTok</span></label>
+            <label class="choice"><input type="checkbox" value="LinkedIn"><span>LinkedIn</span></label>
+            <label class="choice"><input type="checkbox" value="Facebook"><span>Facebook</span></label>
+            <label class="choice"><input type="checkbox" value="Paid ads"><span>Paid ads</span></label>
+            <label class="choice"><input type="checkbox" value="Presentation"><span>Presentation</span></label>
+            <label class="choice"><input type="checkbox" value="Email"><span>Email</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Orientation</label>
+          <div class="choices" data-radio="orientation">
+            <label class="choice"><input type="radio" name="orientation" value="Horizontal 16:9"><span>Horizontal 16:9</span></label>
+            <label class="choice"><input type="radio" name="orientation" value="Vertical 9:16"><span>Vertical 9:16</span></label>
+            <label class="choice"><input type="radio" name="orientation" value="Square 1:1"><span>Square 1:1</span></label>
+            <label class="choice"><input type="radio" name="orientation" value="Recommend for me"><span>Recommend for me</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Target length</label>
+          <div class="choices" data-radio="target_length">
+            <label class="choice"><input type="radio" name="target_length" value="~30 seconds"><span>~30 sec</span></label>
+            <label class="choice"><input type="radio" name="target_length" value="~60 seconds"><span>~60 sec</span></label>
+            <label class="choice"><input type="radio" name="target_length" value="Up to 3 minutes"><span>Up to 3 min</span></label>
+            <label class="choice"><input type="radio" name="target_length" value="Up to 6 minutes"><span>Up to 6 min</span></label>
+            <label class="choice"><input type="radio" name="target_length" value="Recommend for me"><span>Recommend</span></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 4 · Script -->
+      <section class="step" data-name="Script">
+        <h2 class="step-title">Script &amp; content</h2>
+        <p class="step-sub">Bring your own words, or hand it to us.</p>
+        <div class="field">
+          <label>Script status</label>
+          <div class="choices stack" data-radio="script_status">
+            <label class="choice"><input type="radio" name="script_status" value="I have a finished script"><span>I have a finished script</span></label>
+            <label class="choice"><input type="radio" name="script_status" value="I have notes / a product description"><span>I have notes or a product description</span></label>
+            <label class="choice"><input type="radio" name="script_status" value="Write it for me"><span>Write it for me</span></label>
+          </div>
+        </div>
+        <div class="field"><label for="script_notes">Paste your script, notes, or key points</label><textarea id="script_notes" name="script_notes" placeholder="Anything you've got — bullet points are fine."></textarea></div>
+        <div class="field"><label for="must_include">Must-include points, facts, stats, or disclaimers</label><textarea id="must_include" name="must_include" style="min-height:80px" placeholder="Optional"></textarea></div>
+        <div class="field"><label for="avoid">Anything to avoid or not say</label><input id="avoid" name="avoid" type="text" placeholder="Optional" /></div>
+      </section>
+
+      <!-- STEP 5 · Voice, tone, music -->
+      <section class="step" data-name="Voice &amp; tone">
+        <h2 class="step-title">Voice &amp; tone</h2>
+        <p class="step-sub">How should it sound and feel?</p>
+        <div class="field">
+          <label>Voiceover</label>
+          <div class="choices" data-radio="voiceover">
+            <label class="choice"><input type="radio" name="voiceover" value="Yes — voiceover"><span>Yes, voiceover</span></label>
+            <label class="choice"><input type="radio" name="voiceover" value="No — music + on-screen text only"><span>No — music + text only</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Voice</label>
+          <div class="choices" data-radio="voice_gender">
+            <label class="choice"><input type="radio" name="voice_gender" value="Male"><span>Male</span></label>
+            <label class="choice"><input type="radio" name="voice_gender" value="Female"><span>Female</span></label>
+            <label class="choice"><input type="radio" name="voice_gender" value="No preference"><span>No preference</span></label>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="voice_vibe">Voice vibe</label><input id="voice_vibe" name="voice_vibe" type="text" placeholder="youthful, authoritative, warm…" /></div>
+          <div class="field"><label for="accent">Accent</label><select id="accent" name="accent"><option value="">No preference</option><option>American</option><option>British</option><option>Australian</option><option>Other</option></select></div>
+        </div>
+        <div class="field">
+          <label>Tone <span class="hint">Pick a few</span></label>
+          <div class="choices" data-multi="tone">
+            <label class="choice"><input type="checkbox" value="Enthusiastic"><span>Enthusiastic</span></label>
+            <label class="choice"><input type="checkbox" value="Professional"><span>Professional</span></label>
+            <label class="choice"><input type="checkbox" value="Serious"><span>Serious</span></label>
+            <label class="choice"><input type="checkbox" value="Friendly"><span>Friendly</span></label>
+            <label class="choice"><input type="checkbox" value="Inspirational"><span>Inspirational</span></label>
+            <label class="choice"><input type="checkbox" value="Playful"><span>Playful</span></label>
+            <label class="choice"><input type="checkbox" value="Luxury / premium"><span>Luxury / premium</span></label>
+            <label class="choice"><input type="checkbox" value="Calm"><span>Calm</span></label>
+            <label class="choice"><input type="checkbox" value="Urgent"><span>Urgent</span></label>
+            <label class="choice"><input type="checkbox" value="Conversational"><span>Conversational</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Pacing</label>
+          <div class="choices" data-radio="pacing">
+            <label class="choice"><input type="radio" name="pacing" value="Fast / energetic"><span>Fast / energetic</span></label>
+            <label class="choice"><input type="radio" name="pacing" value="Balanced"><span>Balanced</span></label>
+            <label class="choice"><input type="radio" name="pacing" value="Slow / measured"><span>Slow / measured</span></label>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="music_vibe">Music vibe</label><select id="music_vibe" name="music_vibe"><option value="">Recommend for me</option><option>Upbeat</option><option>Cinematic</option><option>Corporate / clean</option><option>Ambient / minimal</option><option>None</option></select></div>
+          <div class="field"><label for="music_reference">Reference track</label><input id="music_reference" name="music_reference" type="text" placeholder="Link or name (optional)" /></div>
+        </div>
+      </section>
+
+      <!-- STEP 6 · Look, brand, structure, assets -->
+      <section class="step" data-name="Look &amp; assets">
+        <h2 class="step-title">Look, brand &amp; assets</h2>
+        <p class="step-sub">Give us your brand and anything you'd like us to use.</p>
+        <div class="field"><label for="brand_colors">Brand colors &amp; fonts</label><input id="brand_colors" name="brand_colors" type="text" placeholder="Hex codes, font names, or 'match my logo'" /></div>
+        <div class="field"><label for="reference_videos">Reference videos you like</label><textarea id="reference_videos" name="reference_videos" style="min-height:80px" placeholder="Links + what you like about them (optional)"></textarea></div>
+        <div class="field">
+          <label>Captions / subtitles on screen?</label>
+          <div class="choices" data-radio="captions">
+            <label class="choice"><input type="radio" name="captions" value="Yes"><span>Yes</span></label>
+            <label class="choice"><input type="radio" name="captions" value="No"><span>No</span></label>
+            <label class="choice"><input type="radio" name="captions" value="Recommend"><span>Recommend</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Opening / intro</label>
+          <div class="choices" data-radio="intro_choice">
+            <label class="choice"><input type="radio" name="intro_choice" value="Yes"><span>Yes — logo reveal / title</span></label>
+            <label class="choice"><input type="radio" name="intro_choice" value="No"><span>No</span></label>
+          </div>
+          <input id="intro_notes" type="text" placeholder="What should the opening include? (optional)" style="margin-top:12px" />
+        </div>
+        <div class="field">
+          <label>Closing / outro</label>
+          <div class="choices" data-radio="outro_choice">
+            <label class="choice"><input type="radio" name="outro_choice" value="Yes"><span>Yes</span></label>
+            <label class="choice"><input type="radio" name="outro_choice" value="No"><span>No</span></label>
+          </div>
+          <input id="outro_notes" type="text" placeholder="What should the ending include? (CTA, contact, socials, website, tagline…)" style="margin-top:12px" />
+        </div>
+        <div class="field">
+          <label>Upload assets <span class="hint">Logo, images, product shots, footage, brand guide — up to 100 MB each</span></label>
+          <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose files to upload">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg>
+            <b>Click to choose files</b> or drag &amp; drop
+            <small>Bigger files? Paste a Drive/Dropbox link in "reference videos" or notes.</small>
+          </div>
+          <input id="fileInput" type="file" multiple accept="image/*,video/*,application/pdf,.zip" hidden />
+          <div class="filelist" id="filelist"></div>
+        </div>
+        <div class="field"><label for="notes">Anything else?</label><textarea id="notes" name="notes" style="min-height:80px" placeholder="Questions, context, or anything we didn't ask (optional)"></textarea></div>
+        <div class="field"><label for="approver">Who approves the final cut?</label><input id="approver" name="approver" type="text" placeholder="Name / role (optional)" /></div>
+      </section>
+
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" id="backBtn" hidden>← Back</button>
+        <div style="flex:1"></div>
+        <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn" hidden>Send creative brief</button>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+
+    <div class="confirm" id="confirm">
+      <div class="confirm-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2>Brief received — thank you.</h2>
+      <p>We've got everything and we're on it. You'll hear from us at <b id="confirmEmail">your email</b> within one business day with next steps.</p>
+      <a class="btn btn-ghost" href="/" style="display:inline-flex">← Back to iqvideostudio.com</a>
+    </div>
+  </main>
+
+  <script>
+    const SUPABASE_URL = 'https://ergcjqowgdxpneohlvam.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVyZ2NqcW93Z2R4cG5lb2hsdmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NTk4NzcsImV4cCI6MjA5MTIzNTg3N30.wQdiGINtzMXezhpgOFS8Q3fYMydDQiL1A0IqTQk9TxQ';
+    const BUCKET = 'iqvs-brief-assets';
+
+    const form = document.getElementById('briefForm');
+    const steps = Array.from(form.querySelectorAll('.step'));
+    const backBtn = document.getElementById('backBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const fill = document.getElementById('progressFill');
+    const progress = document.getElementById('progress');
+    const introHead = document.getElementById('introHead');
+    const stepLabel = document.getElementById('stepLabel');
+    const stepName = document.getElementById('stepName');
+    const errEl = document.getElementById('err');
+    let cur = 0;
+
+    function show(i) {
+      steps.forEach((s, n) => s.classList.toggle('active', n === i));
+      cur = i;
+      const pct = Math.round(((i + 1) / steps.length) * 100);
+      fill.style.width = pct + '%';
+      stepLabel.textContent = 'Step ' + (i + 1) + ' of ' + steps.length;
+      stepName.innerHTML = steps[i].dataset.name;
+      backBtn.hidden = i === 0;
+      nextBtn.hidden = i === steps.length - 1;
+      submitBtn.hidden = i !== steps.length - 1;
+      progress.hidden = false;
+      errEl.textContent = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateStep(i) {
+      const inputs = steps[i].querySelectorAll('input[required], select[required], textarea[required]');
+      for (const el of inputs) {
+        if (!el.value.trim()) { el.focus(); errEl.textContent = 'Please fill in the required fields on this step.'; return false; }
+        if (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)) { el.focus(); errEl.textContent = 'That email doesn’t look right.'; return false; }
+      }
+      // required multi-select: platforms on step 3
+      const reqMulti = steps[i].querySelector('.choices[data-multi="platforms"]');
+      if (reqMulti && !reqMulti.querySelector('input:checked')) { errEl.textContent = 'Pick at least one platform.'; return false; }
+      errEl.textContent = '';
+      return true;
+    }
+
+    nextBtn.addEventListener('click', () => { if (validateStep(cur)) show(Math.min(cur + 1, steps.length - 1)); });
+    backBtn.addEventListener('click', () => show(Math.max(cur - 1, 0)));
+
+    // ── file handling ──
+    const fileInput = document.getElementById('fileInput');
+    const drop = document.getElementById('drop');
+    const filelist = document.getElementById('filelist');
+    let files = [];
+    function fmtSize(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+    function renderFiles() {
+      filelist.innerHTML = '';
+      files.forEach((f, idx) => {
+        const row = document.createElement('div'); row.className = 'fileitem';
+        row.innerHTML = '<span class="fn">' + f.name.replace(/</g,'&lt;') + '</span><span style="display:flex;gap:12px;align-items:center"><span class="fs">' + fmtSize(f.size) + '</span><button type="button" aria-label="Remove">×</button></span>';
+        row.querySelector('button').addEventListener('click', () => { files.splice(idx, 1); renderFiles(); });
+        filelist.appendChild(row);
+      });
+    }
+    function addFiles(list) {
+      for (const f of list) { if (f.size <= 104857600) files.push(f); else errEl.textContent = f.name + ' is over 100 MB — please share it as a link instead.'; }
+      renderFiles();
+    }
+    drop.addEventListener('click', () => fileInput.click());
+    drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+    fileInput.addEventListener('change', () => { addFiles(fileInput.files); fileInput.value = ''; });
+    ['dragover','dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('drag'); }));
+    ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('drag'); }));
+    drop.addEventListener('drop', e => { if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+
+    async function uploadFile(file) {
+      const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const path = (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(36).slice(2)) + '/' + safe;
+      const res = await fetch(SUPABASE_URL + '/storage/v1/object/' + BUCKET + '/' + encodeURI(path), {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': file.type || 'application/octet-stream' },
+        body: file
+      });
+      if (!res.ok) throw new Error('upload');
+      return SUPABASE_URL + '/storage/v1/object/public/' + BUCKET + '/' + encodeURI(path);
+    }
+
+    function collect() {
+      const d = { source: 'iqvideostudio.com/brief' };
+      form.querySelectorAll('input[name], select[name], textarea[name]').forEach(el => {
+        if (el.type === 'checkbox' || el.type === 'radio') return;
+        if (el.name && el.value.trim()) d[el.name] = el.value.trim();
+      });
+      // multi-selects
+      form.querySelectorAll('.choices[data-multi]').forEach(box => {
+        const vals = Array.from(box.querySelectorAll('input:checked')).map(i => i.value);
+        if (vals.length) d[box.dataset.multi] = vals.join(', ');
+      });
+      // radios
+      form.querySelectorAll('.choices[data-radio]').forEach(box => {
+        const sel = box.querySelector('input:checked');
+        if (sel) { const key = box.dataset.radio; if (key !== 'intro_choice' && key !== 'outro_choice') d[key] = sel.value; }
+      });
+      // combine intro/outro choice + notes
+      const iC = form.querySelector('[name=intro_choice]:checked'); const iN = document.getElementById('intro_notes').value.trim();
+      d.intro = [iC ? iC.value : '', iN].filter(Boolean).join(' — ') || undefined;
+      const oC = form.querySelector('[name=outro_choice]:checked'); const oN = document.getElementById('outro_notes').value.trim();
+      d.outro = [oC ? oC.value : '', oN].filter(Boolean).join(' — ') || undefined;
+      return d;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validateStep(cur)) return;
+      submitBtn.disabled = true; errEl.textContent = '';
+      const data = collect();
+      // upload files (best-effort — never block the brief on an upload hiccup)
+      const urls = [];
+      for (let i = 0; i < files.length; i++) {
+        submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + files.length + '…';
+        try { urls.push(await uploadFile(files[i])); } catch (_) { /* skip */ }
+      }
+      if (urls.length) data.asset_urls = urls.join('\n');
+      submitBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/iqvs_briefs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('save');
+        document.getElementById('confirmEmail').textContent = data.email || 'your email';
+        form.classList.add('done'); progress.hidden = true; introHead.hidden = true;
+        document.getElementById('confirm').classList.add('on');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (_) {
+        submitBtn.disabled = false; submitBtn.textContent = 'Send creative brief';
+        errEl.textContent = 'Something went wrong saving your brief. Please try again, or email studio@iqvideostudio.com.';
+      }
+    });
+
+    show(0);
+  </script>
+</body>
+</html>

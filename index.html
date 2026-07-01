@@ -147,13 +147,13 @@
     /* ── Section shell + tonal rhythm (V4: progression within the dark) ── */
     section { position: relative; }
     section[id] { scroll-margin-top: 96px; }
-    .band { padding: 116px 0; }
-    .band--tight { padding: 84px 0; }
+    .band { padding: 84px 0; }
+    .band--tight { padding: 54px 0; }
     .band--warm { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-warm) 50%, var(--ink) 100%); }
     .band--cool { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-cool) 50%, var(--ink) 100%); }
     .hr { height: 1px; background: var(--ink-line); border: 0; }
 
-    .sec-head { max-width: 720px; margin-bottom: 52px; }
+    .sec-head { max-width: 720px; margin-bottom: 38px; }
     .sec-head h2 {
       font-size: clamp(2rem, 4vw, 3.25rem);
       line-height: 1.04; letter-spacing: -0.02em; color: var(--paper); margin-top: 18px;
@@ -277,15 +277,18 @@
     .btn-sm { padding: 11px 19px; font-size: 0.9rem; }
 
     /* ── Hero ── */
-    .hero { padding: 164px 0 92px; }
+    .hero { padding: 148px 0 56px; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px; align-items: center; }
     .trust-badge {
-      display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
-      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em; color: var(--paper-dim);
-      padding: 9px 15px; border-radius: 100px; background: var(--glass); border: 1px solid var(--glass-border);
+      display: inline-flex; align-items: center; flex-wrap: wrap; gap: 11px 18px;
+      font-family: var(--font-mono); font-size: 0.98rem; letter-spacing: 0.02em; color: var(--paper);
+      padding: 14px 24px; border-radius: 100px; font-weight: 500;
+      background: var(--glass); border: 1px solid rgba(231,178,90,0.32); box-shadow: var(--bleed);
     }
-    .trust-badge strong { color: var(--paper); font-weight: 500; }
-    .trust-badge .flag { font-size: 0.95rem; }
+    .trust-badge .ti { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .trust-badge strong { color: var(--paper); font-weight: 600; }
+    .trust-badge .flag { font-size: 1.2rem; }
+    .trust-badge .sep { width: 5px; height: 5px; border-radius: 50%; background: var(--projector); box-shadow: 0 0 9px var(--projector); flex-shrink: 0; }
 
     .hero h1 {
       font-size: clamp(2.7rem, 6vw, 5.3rem);
@@ -294,6 +297,7 @@
     }
     .hero h1 em { font-style: italic; color: var(--projector); font-weight: 500; }   /* amber moment #1 */
     .hero-lead { color: var(--paper-dim); font-size: 1.18rem; line-height: 1.62; font-weight: 400; max-width: 560px; }
+    .hero-lead--pitch { font-size: 1.34rem; line-height: 1.5; color: var(--paper); max-width: 580px; }
     .hero-lead + .hero-lead { margin-top: 16px; }
     .hero-lead strong { color: var(--paper); font-weight: 600; }
     .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
@@ -572,9 +576,11 @@
       .mobile-nav a { display: block; padding: 15px 4px; color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--ink-line); font-size: 1.08rem; font-weight: 500; }
       .mobile-nav a.btn { margin-top: 14px; border: 1px solid transparent; justify-content: center; }
 
-      .hero { padding: 128px 0 70px; }
-      .band { padding: 76px 0; }
-      .band--tight { padding: 60px 0; }
+      .hero { padding: 112px 0 44px; }
+      .trust-badge { font-size: 0.9rem; padding: 12px 18px; }
+      .trust-badge .ti { white-space: normal; }
+      .band { padding: 58px 0; }
+      .band--tight { padding: 42px 0; }
       .grid, .why-grid, .price-grid, .produce-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       .channel-row { grid-template-columns: 1fr 1fr; }
@@ -641,15 +647,18 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <span class="trust-badge">
-            <span class="flag" aria-hidden="true">🇺🇸</span>
-            <strong>U.S.-Based Studio</strong> · Script-to-Final-Edit · Commercial-Use Rights Included
+            <span class="ti"><span class="flag" aria-hidden="true">🇺🇸</span> <strong>U.S.-Based Studio</strong></span>
+            <span class="sep" aria-hidden="true"></span>
+            <span class="ti">Script to Final Edit</span>
+            <span class="sep" aria-hidden="true"></span>
+            <span class="ti">Commercial-Use Rights Included</span>
           </span>
           <h1>Premium video production for brands, creators &amp; <em>founders.</em></h1>
-          <p class="hero-lead">
-            IQ Video Studio is a <strong>U.S.-based studio</strong> creating polished brand videos, product explainers, faceless YouTube episodes, and short-form content for founders, creators, agencies, and growing businesses.
+          <p class="hero-lead hero-lead--pitch">
+            <strong>We build complete video assets and repeatable content systems</strong> for people who need professional video without managing a production team.
           </p>
           <p class="hero-lead">
-            From concept and script to voiceover, visuals, motion graphics, music, and final edit — we handle the full production process so you can focus on your message, offer, and audience.
+            A U.S.-based studio producing brand videos, product explainers, faceless YouTube episodes, and short-form — concept to final edit, so you can focus on your message, not the production.
           </p>
           <div class="hero-cta">
             <a href="#" class="btn btn-primary" data-intake>Start a Project</a>

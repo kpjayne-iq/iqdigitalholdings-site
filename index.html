@@ -911,7 +911,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false"><span>How do projects begin?</span><span class="faq-icon" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Send your idea, goal, audience, preferred style, and any brand material through the project form. We'll recommend the best scope, then send a secure Upwork contract to lock it in.</p></div>
+          <div class="faq-a"><p>Send your idea, goal, audience, preferred style, and any brand material through the project form. We'll recommend the best scope, then send a secure invoice to lock it in — a 50% deposit to start, with the balance due on delivery.</p></div>
         </div>
       </div>
     </div>
@@ -929,7 +929,7 @@
       <div>
         <span class="secure">
           <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          Payments and contracts protected through Upwork escrow.
+          Secure payment — 50% deposit to start, balance on delivery.
         </span>
       </div>
     </div>
@@ -965,7 +965,7 @@
       <div class="intake-body">
         <span class="slate">Start a Project</span>
         <h2 id="intake-title">Tell us about your video.</h2>
-        <p class="intro">Share your idea and a few details. Within one business day we'll recommend the right scope and send a secure Upwork contract to lock it in.</p>
+        <p class="intro">Share your idea and a few details. Within one business day we'll recommend the right scope and send a secure invoice to lock it in.</p>
 
         <form id="intakeForm" novalidate>
           <div class="field-row">
@@ -1025,7 +1025,7 @@
           <button type="submit" class="btn btn-primary">Send Project Brief</button>
           <p class="modal-fine">
             <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            Payments and contracts are protected through Upwork escrow.
+            Secure payment — 50% deposit to start, balance on delivery.
           </p>
         </form>
       </div>
@@ -1034,17 +1034,17 @@
         <div class="confirm-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
         <span class="slate no-tick" style="justify-content:center">Brief received</span>
         <h2>Thanks — we've got your brief.</h2>
-        <p>Within one business day you'll get a recommended scope and a secure Upwork contract link to lock it in.</p>
-        <a href="https://www.upwork.com/services/product/video-audio-a-professionally-directed-explainer-video-from-concept-to-final-cut-2071246514540519197?ref=fl_profile" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%">Continue to secure Upwork contract</a>
-        <p class="modal-fine">You can also keep browsing — we'll be in touch by email.</p>
+        <p>Within one business day you'll get a recommended scope and a secure invoice to lock it in — a 50% deposit to start, with the balance due on delivery.</p>
+        <button type="button" class="btn btn-primary" id="confirmClose" style="width:100%">Done</button>
+        <p class="modal-fine">We'll be in touch by email shortly.</p>
       </div>
     </div>
   </div>
 
   <script>
     /* ─────────────────────────────────────────────
-       Lead capture — every brief is persisted to Supabase before the
-       Upwork hand-off. The key below is the project's public anon key and
+       Lead capture — every brief is persisted to Supabase before any
+       payment hand-off. The key below is the project's public anon key and
        is SAFE to expose: the iqvs_leads table has row-level security that
        allows INSERT only — visitors can submit a brief but can never read
        anyone else's. If the insert fails (offline, etc.) the form degrades
@@ -1133,6 +1133,7 @@
       el.addEventListener('click', function (e) { e.preventDefault(); openIntake(el); });
     });
     document.getElementById('intakeClose').addEventListener('click', closeIntake);
+    document.getElementById('confirmClose').addEventListener('click', closeIntake);
     modal.addEventListener('click', function (e) { if (e.target === modal) closeIntake(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeIntake(); });
 
@@ -1146,7 +1147,7 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
-    /* ── Submit: capture on-site, confirm, then route to Upwork ── */
+    /* ── Submit: capture on-site, confirm, then follow up with scope + invoice ── */
     function buildMailto(data) {
       const subject = encodeURIComponent('New project brief — ' + (data.name || 'Website'));
       const body = encodeURIComponent(

@@ -338,6 +338,42 @@
     }
     .ch-glyph svg { width: 13px; height: 13px; fill: var(--projector); margin-left: 1px; }
 
+    /* ── Sample cuts (self-hosted capability clips, click-to-play) ── */
+    .clips { margin-top: 34px; }
+    .clips .slate { margin-bottom: 16px; }
+    .clip-row { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; }
+    .clip {
+      position: relative; flex: 0 0 auto; margin: 0; height: clamp(172px, 14vw, 202px);
+      border-radius: var(--radius); overflow: hidden; background: #000;
+      border: 1px solid var(--ink-line); scroll-snap-align: start;
+      box-shadow: 0 0 0 1px rgba(231,178,90,0.10), 0 0 34px -14px rgba(231,178,90,0.35);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .clip:hover { border-color: rgba(231,178,90,0.4); box-shadow: var(--bleed); }
+    .clip-h { aspect-ratio: 16/9; }
+    .clip-v { aspect-ratio: 9/16; }
+    .clip video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .clip-play {
+      position: absolute; inset: 0; width: 100%; border: 0; background: rgba(8,9,12,0.18); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background 0.3s ease;
+    }
+    .clip-play:hover { background: rgba(8,9,12,0.02); }
+    .clip-play span {
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: rgba(12,13,16,0.72); border: 1px solid var(--projector);
+      box-shadow: 0 0 26px -6px rgba(231,178,90,0.65); transition: transform 0.3s ease;
+    }
+    .clip-play:hover span { transform: scale(1.08); }
+    .clip-play svg { width: 16px; height: 16px; fill: var(--projector); margin-left: 2px; }
+    .clip figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 10px 9px; pointer-events: none;
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--paper-dim); background: linear-gradient(to top, rgba(8,9,12,0.85), transparent);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .clip.playing .clip-play, .clip.playing figcaption { display: none; }
+    @media (max-width: 860px) { .clip { height: 236px; } }
+
     /* ── Cards (V2/V3 legibility + hierarchy) ── */
     .grid { display: grid; gap: 20px; }
     .card {
@@ -704,6 +740,36 @@
           <a class="channel" href="https://www.youtube.com/@TheDivineVisitors" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Divine Visitors</a>
           <a class="channel" href="https://www.youtube.com/@TheLastVisitors" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Last Visitor</a>
           <a class="channel" href="https://www.youtube.com/@TheFailureCatalog" target="_blank" rel="noopener"><span class="ch-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>The Failure Catalog</a>
+        </div>
+      </div>
+      <div class="clips reveal rd2">
+        <span class="slate no-tick">Sample cuts — watch the range</span>
+        <div class="clip-row">
+          <figure class="clip clip-h">
+            <video src="/media/studio-intro.mp4" poster="/media/posters/studio-intro.jpg" preload="none" playsinline></video>
+            <button class="clip-play" type="button" aria-label="Play sample: studio intro, 47 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+            <figcaption>Studio intro · 16:9</figcaption>
+          </figure>
+          <figure class="clip clip-v">
+            <video src="/media/sample-poker-strategy.mp4" poster="/media/posters/sample-poker-strategy.jpg" preload="none" playsinline></video>
+            <button class="clip-play" type="button" aria-label="Play sample: poker strategy short, 66 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+            <figcaption>Poker · 9:16</figcaption>
+          </figure>
+          <figure class="clip clip-v">
+            <video src="/media/sample-finance-hook.mp4" poster="/media/posters/sample-finance-hook.jpg" preload="none" playsinline></video>
+            <button class="clip-play" type="button" aria-label="Play sample: finance hook short, 63 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+            <figcaption>Finance · 9:16</figcaption>
+          </figure>
+          <figure class="clip clip-v">
+            <video src="/media/sample-fitness-recovery.mp4" poster="/media/posters/sample-fitness-recovery.jpg" preload="none" playsinline></video>
+            <button class="clip-play" type="button" aria-label="Play sample: fitness recovery short, 50 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+            <figcaption>Fitness · 9:16</figcaption>
+          </figure>
+          <figure class="clip clip-h">
+            <video src="/media/sample-saas-explainer.mp4" poster="/media/posters/sample-saas-explainer.jpg" preload="none" playsinline></video>
+            <button class="clip-play" type="button" aria-label="Play sample: SaaS explainer, 63 seconds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+            <figcaption>SaaS explainer · 16:9</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -1194,6 +1260,18 @@
 
       modal.classList.add('confirmed');
       modal.querySelector('.confirm .btn').focus();
+    });
+
+    /* ── Sample cuts: click-to-play, one at a time ── */
+    document.querySelectorAll('.clip').forEach(function (clip) {
+      const vid = clip.querySelector('video');
+      clip.querySelector('.clip-play').addEventListener('click', function () {
+        document.querySelectorAll('.clip video').forEach(function (o) { if (o !== vid) o.pause(); });
+        clip.classList.add('playing');
+        vid.controls = true;
+        vid.play().catch(function () { clip.classList.remove('playing'); vid.controls = false; });
+      });
+      vid.addEventListener('ended', function () { clip.classList.remove('playing'); vid.controls = false; });
     });
 
     /* ── FAQ accordion ── */

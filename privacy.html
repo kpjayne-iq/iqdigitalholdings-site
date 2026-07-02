@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — IQ Video Studio</title>
+  <meta name="description" content="How IQ Video Studio collects, uses, and protects the information you share with us." />
+  <meta name="theme-color" content="#0C0D10" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C0D10'/%3E%3Crect x='3.5' y='3.5' width='25' height='25' rx='5' fill='none' stroke='%23E7B25A' stroke-width='1.4'/%3E%3Cpath d='M13 11.5l8 4.5-8 4.5z' fill='%23E7B25A'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:#0C0D10; --ink-raise:#16181E; --ink-line:#2A2E36;
+      --projector:#E7B25A; --projector-deep:#C8913A;
+      --paper:#F4F1EA; --paper-dim:#BCB6AA; --paper-faint:#948D80;
+      --font-display:"Fraunces",Georgia,serif; --font-body:"Hanken Grotesk",system-ui,sans-serif; --font-mono:"Geist Mono",ui-monospace,monospace;
+      --radius:10px;
+    }
+    html { scroll-behavior:smooth; }
+    body {
+      background:var(--ink); color:var(--paper); font-family:var(--font-body); font-weight:400; line-height:1.65;
+      -webkit-font-smoothing:antialiased; min-height:100vh; overflow-x:hidden;
+      background-image:
+        radial-gradient(120% 70% at 50% -10%, rgba(231,178,90,0.07) 0%, transparent 42%),
+        radial-gradient(90% 60% at 90% 2%, rgba(27,36,53,0.5) 0%, transparent 55%);
+      background-attachment:fixed;
+    }
+    h1,h2 { font-family:var(--font-display); font-weight:600; }
+    a { color:var(--projector); }
+    :focus-visible { outline:2px solid var(--projector); outline-offset:3px; border-radius:6px; }
+    .wrap { max-width:720px; margin:0 auto; padding:0 22px; }
+
+    header { padding:22px 0; border-bottom:1px solid var(--ink-line); background:rgba(12,13,16,0.6); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+    .hbar { display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; }
+    .brand-mark { width:34px; height:34px; border-radius:8px; border:1px solid var(--projector); background:radial-gradient(120% 120% at 30% 20%, rgba(231,178,90,0.22), rgba(12,13,16,0.9)); display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px -8px rgba(231,178,90,0.6); }
+    .brand-mark svg { width:15px; height:15px; fill:var(--projector); margin-left:2px; }
+    .brand-name { font-family:var(--font-display); font-weight:600; font-size:1.02rem; color:var(--paper); }
+    .brand-sub { font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--paper-dim); }
+    .back { font-size:0.85rem; color:var(--paper-dim); text-decoration:none; }
+    .back:hover { color:var(--projector); }
+
+    .doc-head { padding:48px 0 10px; }
+    .slate { font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--projector); font-weight:500; }
+    .doc-head h1 { font-size:clamp(1.9rem,4.6vw,2.7rem); line-height:1.06; letter-spacing:-0.02em; margin:14px 0 10px; }
+    .doc-meta { font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-faint); }
+
+    main.doc { padding:26px 0 80px; }
+    .doc h2 { font-size:1.18rem; margin:34px 0 10px; color:var(--paper); }
+    .doc p, .doc li { color:var(--paper-dim); font-size:0.97rem; }
+    .doc p + p { margin-top:10px; }
+    .doc ul { margin:10px 0 0 20px; display:flex; flex-direction:column; gap:7px; }
+    .doc strong { color:var(--paper); font-weight:600; }
+    .doc-foot { margin-top:44px; padding-top:22px; border-top:1px solid var(--ink-line); font-size:0.88rem; color:var(--paper-faint); }
+    .doc-foot a { color:var(--projector); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hbar">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6l11 6-11 6z"/></svg></span>
+        <span class="brand-text" style="display:flex;flex-direction:column">
+          <span class="brand-name">IQ Video Studio</span>
+          <span class="brand-sub">Privacy Policy</span>
+        </span>
+      </a>
+      <a class="back" href="/">&larr; Back to site</a>
+    </div>
+  </header>
+
+  <div class="wrap doc-head">
+    <span class="slate">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="doc-meta">Effective July 2, 2026</p>
+  </div>
+
+  <main class="doc">
+    <div class="wrap">
+      <p>This policy explains what information IQ Video Studio (a studio of <strong>IQ Digital Holdings LLC</strong>) collects through iqvideostudio.com, how we use it, and the choices you have. The short version: we collect only what you send us, we use it to respond and produce your project, and we don't sell it or use advertising trackers.</p>
+
+      <h2>1. What we collect</h2>
+      <ul>
+        <li><strong>Project inquiries and creative briefs.</strong> When you submit our forms, we collect what you enter — typically your name, company, email, phone, website, and project details.</li>
+        <li><strong>Uploaded files.</strong> Assets you attach to a creative brief (logos, images, footage, documents) are stored so we can use them in your production.</li>
+        <li><strong>Payment information.</strong> Invoices are processed by Stripe. Your card details go directly to Stripe — we never see or store them.</li>
+        <li><strong>Basic technical logs.</strong> Our hosting provider keeps standard server logs (such as IP address and pages requested) for security and reliability.</li>
+      </ul>
+
+      <h2>2. What we don't do</h2>
+      <p>We don't run advertising trackers or analytics cookies on this site, we don't sell or rent your information, and we don't add you to marketing lists you didn't ask for.</p>
+
+      <h2>3. How we use your information</h2>
+      <p>We use what you share to respond to your inquiry, recommend a scope, produce your video, send invoices and service emails (including a confirmation copy of your own submission), and keep normal business records.</p>
+
+      <h2>4. Service providers</h2>
+      <p>We rely on a small set of providers to run the studio, each of which processes your data only to provide their service to us:</p>
+      <ul>
+        <li><strong>Vercel</strong> — website hosting.</li>
+        <li><strong>Supabase</strong> — secure storage of form submissions and uploaded files.</li>
+        <li><strong>Resend</strong> — transactional email delivery.</li>
+        <li><strong>Stripe</strong> — invoicing and payment processing.</li>
+        <li><strong>YouTube (Google)</strong> — the showreel on our homepage is an embedded YouTube player. It loads only if you choose to play it; from that point, YouTube's own privacy policy applies.</li>
+      </ul>
+      <p>New submissions also generate an internal alert (email and studio notification channels) so we can respond quickly; those alerts contain the details you submitted.</p>
+
+      <h2>5. Retention</h2>
+      <p>We keep inquiry and project information for as long as it's relevant to the inquiry, the project, or our business records. Want something deleted sooner? Just ask.</p>
+
+      <h2>6. Your rights &amp; choices</h2>
+      <p>You can ask us to access, correct, or delete the information we hold about you at any time by emailing <a href="mailto:studio@iqvideostudio.com">studio@iqvideostudio.com</a>. We'll respond promptly, and applicable law (such as state privacy laws) may give you additional rights.</p>
+
+      <h2>7. Children</h2>
+      <p>This site and our services are for businesses and adults; they are not directed to children under 13, and we don't knowingly collect children's information.</p>
+
+      <h2>8. Changes</h2>
+      <p>If we change this policy, we'll post the new version here and update the effective date above.</p>
+
+      <div class="doc-foot">
+        Questions about privacy? Email <a href="mailto:studio@iqvideostudio.com">studio@iqvideostudio.com</a>.<br />
+        See also our <a href="/terms">Terms of Service</a>.
+      </div>
+    </div>
+  </main>
+</body>
+</html>
